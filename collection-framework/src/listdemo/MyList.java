@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class MyList {
 	
@@ -25,6 +26,8 @@ public class MyList {
 //		Collections.sort(names);
 //		System.out.println(names);
 		
+		Scanner scan= new Scanner(System.in);
+		
 		List<Employee> employeeList=new ArrayList<>();
 		
 		Employee e1=new Employee(1001, "Tushar", 45000);
@@ -37,24 +40,37 @@ public class MyList {
 		employeeList.add(e3);
 		employeeList.add(e4);
 		
-		Collections.sort(employeeList);
-		
+		System.out.println("Enter employee id : ");
+		int id=scan.nextInt();
+		Employee searchedEmplyee=null;
 		for(Employee emp:employeeList) {
-			System.out.println(emp);
+			if(emp.getEmplyeeId()==id) {
+				searchedEmplyee=emp;
+				break;
+			}
 		}
 		
+		System.out.println(searchedEmplyee);
 		
 		
+//		Collections.sort(employeeList);
+//		
+//		for(Employee emp:employeeList) {
+//			System.out.println(emp);
+//		}
+//		
 		
-		Comparator<Employee> sortById = new SortById();
 		
-		
-		System.out.println("Sort By ID ");
-		Collections.sort(employeeList, sortById);
-		
-		for(Employee emp:employeeList) {
-			System.out.println(emp);
-		}
+//		
+//		Comparator<Employee> sortById = new SortById();
+//		
+//		
+//		System.out.println("Sort By ID ");
+//		Collections.sort(employeeList, sortById);
+//		
+//		for(Employee emp:employeeList) {
+//			System.out.println(emp);
+//		}
 		
 	}
 

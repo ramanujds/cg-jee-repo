@@ -33,16 +33,20 @@ public class MySet {
 			
 		};
 		
-		Set<Employee> employeeList=new TreeSet<Employee>(sortByName);
+		Set<Employee> employeeList=new HashSet<Employee>();
 		Employee e1=new Employee(1001, "Tushar", 45000);
 		Employee e2=new Employee(1003, "Rahul", 35000);
 		Employee e3=new Employee(1002, "Kunal", 55000);
 		Employee e4=new Employee(1004, "Abhi", 30000);
+		Employee e5=new Employee(1004, "Abhi", 30000);
 		
 		employeeList.add(e1);
 		employeeList.add(e2);
 		employeeList.add(e3);
 		employeeList.add(e4);
+		employeeList.add(e5);
+		
+		
 		
 		for(Employee emp:employeeList) {
 			System.out.println(emp);
