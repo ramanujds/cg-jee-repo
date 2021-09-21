@@ -40,17 +40,23 @@ public class MyList {
 		employeeList.add(e3);
 		employeeList.add(e4);
 		
-		System.out.println("Enter employee id : ");
-		int id=scan.nextInt();
-		Employee searchedEmplyee=null;
-		for(Employee emp:employeeList) {
-			if(emp.getEmplyeeId()==id) {
-				searchedEmplyee=emp;
-				break;
-			}
-		}
+		employeeList.stream().filter(e->e.getSalary()>40000)
+								.map(e->{e.setSalary(60000);return e;})
+								.forEach(e->System.out.println(e));
 		
-		System.out.println(searchedEmplyee);
+		
+		
+//		System.out.println("Enter employee id : ");
+//		int id=scan.nextInt();
+//		Employee searchedEmplyee=null;
+//		for(Employee emp:employeeList) {
+//			if(emp.getEmplyeeId()==id) {
+//				searchedEmplyee=emp;
+//				break;
+//			}
+//		}
+//		
+//		System.out.println(searchedEmplyee);
 		
 		
 //		Collections.sort(employeeList);
@@ -82,9 +88,9 @@ public class MyList {
 }
 
 
-class SortById implements Comparator<Employee>{
-	@Override
-	public int compare(Employee e1, Employee e2) {
-		return e1.getEmplyeeId()-e2.getEmplyeeId();
-	}
-}
+//class SortById implements Comparator<Employee>{
+//	@Override
+//	public int compare(Employee e1, Employee e2) {
+//		return e1.getEmplyeeId()-e2.getEmplyeeId();
+//	}
+//}
