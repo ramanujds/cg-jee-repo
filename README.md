@@ -4,7 +4,6 @@
 
 ```sql
 
-
 use cg_db;
 create table trainee(traineeId numeric(6), traineeName varchar(30), dob date, email varchar(50));
 
@@ -76,8 +75,65 @@ select traineeId, traineeName, trainerId from trainee;
 
 select * from trainee where trainerId=5001;
 
+create table emptable(empno numeric(5) primary key, ename varchar(30), job varchar(30), hireDate date, mgr numeric(5), sal numeric(5), comm numeric(5), deptNo numeric(5));
 
+insert into emptable values(7369, 'Smith','Clerk','1980-12-17', 7902,800, null ,20);
+insert into emptable values(7499, 'Allen','Salesman','1981-02-20', 7698,1600, 300 ,30);
+insert into emptable values(7521, 'Ward','Salesman','1981-02-22', 7698,1250, 500 ,30);
+insert into emptable values(7566, 'Jones','Manager','1981-04-02', 7839,2975, null ,20);
+insert into emptable values(7654, 'Martin','Salesman','1981-09-28', 7698,1250, 1400 ,30);
+insert into emptable values(7698, 'Blake','Manager','1981-05-01', 7839,2850, null ,30);
+insert into emptable values(7782, 'Clark','Manager','1981-06-09', 7839,2450, null ,10);
+insert into emptable values(7788, 'Scott','Analyst','1987-04-19', 7566,3000, null ,20);
+insert into emptable values(7839, 'King','President','1981-11-17',null,5000, null ,10);
+insert into emptable values(7844, 'Turner','Salesman','1981-09-08', 7698,1500, 0 ,30);
+insert into emptable values(7876, 'Adams','Clerk','1987-05-23', 7788,1100, null ,20);
+insert into emptable values(7900, 'James','Clerk','1981-12-03', 7698,950, null ,30);
+insert into emptable values(7902, 'Ford','Analyst','1981-12-03', 7566,3000, null ,20);
+insert into emptable values(7934, 'Miller','Clerk','1982-01-23', 7782,1300, null,10);
 
+select * from emptable;
 
+select distinct job from emptable;
+
+select * from emptable order by sal asc;
+
+select * from emptable where job='MANAGER';
+
+select * from emptable where empno in(select mgr from emptable);
+
+select empno,ename,hiredate from emptable where hiredate<'1981-03-01';
+
+SELECT * from emptable where extract(year from hiredate)<1981;
+
+select empno,ename,sal,sal/30 as 'Daily Salary', sal*12 as 'Annual_Salary' from emptable order by Annual_Salary asc;
+
+select empno,ename, hiredate, datediff(now(),hiredate)/365 as 'Experience' from emptable order by 4 desc;
+
+select * from emptable where job='Clerk' OR job='Analyst';
+
+select * from emptable where job not in('Clerk','Analyst');
+
+select * from emptable where sal>=1000 AND sal<=2000;
+
+select * from emptable where sal not between 1000 and 2000;
+
+select * from emptable where comm is not null and comm <> 0;
+
+select * from emptable where hiredate like '____-02-%';
+
+-- like 'a%'
+-- like '%a'
+-- like 'a___'
+-- like 'a_b%'
+
+select * from emptable order by sal asc limit 1;
+
+-- Group By
+select job, max(sal) as 'Top Packages', avg(sal) as 'Average Salary', 
+			min(sal) as 'Minimum Salary', sum(sal) as 'Total Salary', 
+            count(*) as 'Total Employees' from emp group by job having count(*)>2;
+            
+-- where vs having
 
 ```
