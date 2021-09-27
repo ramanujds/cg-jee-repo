@@ -136,4 +136,60 @@ select job, max(sal) as 'Top Packages', avg(sal) as 'Average Salary',
             
 -- where vs having
 
+create table dept
+ (
+    deptno numeric(5),
+    dname varchar(30),
+    location varchar(50)
+ );
+
+use cg_db;
+
+insert into dept values(10,'IT','BANGALORE');
+
+ insert into dept values(20,'SALES','MUMBAI');
+
+ insert into dept values(30,'ACCOUNTS','KOLKATA');
+ insert into dept values(40,'HR','DELHI');
+ 
+ 
+ select * from dept;
+ 
+ select d.* from emptable e right join dept d on e.deptno=d.deptno where e.empno is null;
+ 
+ 
+show tables;
+
+select e.empno, e.ename, e.deptno, d.location from emptable e join dept d USING(deptno) where d.location='KOLKATA';
+
+-- select no of employees working in IT department
+
+select COUNT(e.empno) AS 'Toatl Employees' from emptable e join dept d using(deptno) where d.dname='IT';
+
+select d.*, count(empno) from dept d left join emptable e using(deptno) group by d.deptno, dname, location;
+
+-- total salary of Sales dept
+
+select sum(e.sal) AS 'Toatl Salary' from emptable e join dept d using(deptno) where d.dname='SALES';
+
+-- employees working in IT dept or in Mumbai location
+
+select e.*, d.*from emptable e left join dept d on e.deptNo = d.deptNo where dname ='IT' or location ='Mumbai';
+
+-- employees who are getting salaries more than their managers
+
+-- least earning manager
+-- manager with least no of employees
+
+-- Salesman working in Kolkata
+
+
+-- Manager who belong to IT
+
+
+
+
+
+
+
 ```
