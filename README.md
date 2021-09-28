@@ -3,7 +3,6 @@
 ## SQL Commands
 
 ```sql
-
 use cg_db;
 create table trainee(traineeId numeric(6), traineeName varchar(30), dob date, email varchar(50));
 
@@ -176,15 +175,46 @@ select sum(e.sal) AS 'Toatl Salary' from emptable e join dept d using(deptno) wh
 
 select e.*, d.*from emptable e left join dept d on e.deptNo = d.deptNo where dname ='IT' or location ='Mumbai';
 
+-- list all the managers
+
+select * from emp;
+
+select distinct m.* from emp e, emp m where e.mgr=m.empno;
+
+select distinct mgr from emp where mgr is not null;
+
+select * from emp where empno in (select distinct mgr from emp);
+
 -- employees who are getting salaries more than their managers
 
+select e.* from emp e join emp m on e.mgr=m.empno where e.sal>m.sal;
+
+
+
 -- least earning manager
+
+select distinct m.empno, m.ename, m.sal from emp e join emp m on e.mgr=m.empno order by m.sal asc limit 1;
+
+select * from emp where empno in (select distinct mgr from emp) order by sal asc limit 1;
+
 -- manager with least no of employees
+
+select m.empno, m.ename, (select count(empno) from emp e where e.mgr=m.empno) as 'Total Employees' from emp m where (select count(empno) from emp e where e.mgr=m.empno)>0 order by 3 asc;
+
+select e.ename,e.deptno, k.mgr,count(e.empno)  from emp e, emp k where e.empno=k.mgr  group by k.mgr,e.ename,e.deptno order by count(e.empno) limit 1;
+
+
 
 -- Salesman working in Kolkata
 
 
 -- Manager who belong to IT
+
+select e.MGR from emp e join Dept d on e.DEPTNO =d.deptNo where d.dname = 'IT';
+
+
+
+
 
 
 
