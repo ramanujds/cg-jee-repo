@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cg.jdbcapp.dao.DepartmentDao;
+import com.cg.jdbcapp.dao.DepartmentDaoCollectionBasedImpl;
 import com.cg.jdbcapp.dao.DepartmentDaoImpl;
 import com.cg.jdbcapp.model.Department;
 
@@ -12,7 +13,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	private DepartmentDao dao;
 	
 	public DepartmentServiceImpl() {
-		dao=new DepartmentDaoImpl();
+		dao=new DepartmentDaoCollectionBasedImpl();
 	}
 	
 	@Override
