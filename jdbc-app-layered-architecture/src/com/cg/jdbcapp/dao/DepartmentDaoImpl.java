@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.cg.jdbcapp.exception.DepartmentNotFoundException;
 import com.cg.jdbcapp.model.Department;
 
 public class DepartmentDaoImpl implements DepartmentDao {
@@ -49,6 +50,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 			String location=rs.getString("location");
 			department=new Department(deptNo,deptName,location);
 					
+		}
+		else {
+			throw new DepartmentNotFoundException("Department with DeptNo : "+deptNo+" Not Found");
 		}
 		return department;
 		

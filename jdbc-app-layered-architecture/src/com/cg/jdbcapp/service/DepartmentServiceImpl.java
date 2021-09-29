@@ -13,7 +13,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	private DepartmentDao dao;
 	
 	public DepartmentServiceImpl() {
-		dao=new DepartmentDaoCollectionBasedImpl();
+		dao=new DepartmentDaoImpl();
 	}
 	
 	@Override
