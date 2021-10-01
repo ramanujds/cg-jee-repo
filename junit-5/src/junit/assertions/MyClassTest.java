@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -46,23 +47,32 @@ class MyClassTest {
 	}
 	
 	
-	@Test
-	@DisabledOnOs(value = OS.WINDOWS)
-	@EnabledOnJre(value = JRE.JAVA_15)
-	void testDivideForException() {
-		assertThrows(RuntimeException.class, ()-> obj.divide(5, 0));
-	}
+	
 
 	@Test
 	void testAdd() {
 		assertEquals(15, obj.add(10, 5));
 	}
-
-	@Test
-	void testDivide() {
-		assertEquals(2, obj.divide(6, 3));
+	
+	@Nested
+	class DivideTest{
+		
+		@Test
+		@DisabledOnOs(value = OS.WINDOWS)
+		@EnabledOnJre(value = JRE.JAVA_15)
+		void testDivideForException() {
+			assertThrows(RuntimeException.class, ()-> obj.divide(5, 0));
+		}
+		
+		@Test
+		void testDivide() {
+			assertEquals(2, obj.divide(6, 3));
+			
+		}
 		
 	}
+
+	
 	
 	
 
