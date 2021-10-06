@@ -16,7 +16,7 @@ public class App
     {
         TraineeDao dao=new TraineeDaoImpl();
     	
-//    	Trainee trainee = new Trainee(1002,"Mahesh","mahesh@gmail.com",40000);
+//    	Trainee trainee = new Trainee(1003,"Pritam Dutta","pritam@gmail.com",35000);
 //    	Trainee savedTrainee = dao.addTrainee(trainee);
 //    	System.out.println(savedTrainee);
         
@@ -26,15 +26,24 @@ public class App
 //       System.out.println(isDeleted); 
         
         
-//        Trainee trainee=new Trainee(1001,"Tushar","tushar@gmail.com",60000);
+//        Trainee trainee=new Trainee(1001,"Tushar Sharma","tusharsharma@gmail.com",70000);
 //        
 //        Trainee savedTrainee = dao.updateTrainee(trainee);
-//        
+        
 //        System.out.println(savedTrainee);
         
-        List<Trainee> trainees=dao.getAllTrainees();
+//        List<Trainee> trainees=dao.getAllTrainees();
+//        
+//        trainees.forEach(System.out::println);
         
-        trainees.forEach(System.out::println);
+//        Trainee trainee=dao.findTraineeByEmail("pritam@gmail.com");
+//        System.out.println(trainee);
+        
+//        Trainee trainee=dao.findTraineeByTraineeName("Pritam Dutta");
+//        System.out.println(trainee);
+        
+        Trainee trainee=dao.getTraineeByEmailWithNativeQuery("pritam@gmail.com");
+        System.out.println(trainee);
     	
     }
 }

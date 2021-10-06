@@ -3,10 +3,12 @@ package com.cg.app.jpa.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "trainee_info")
+@NamedQuery(name = "find-by-trainee-name", query = "from Trainee where traineeName=:traineeName")
 public class Trainee {
 
 	@Id
