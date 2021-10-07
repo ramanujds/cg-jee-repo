@@ -1,9 +1,17 @@
 package com.cg.app.jpa.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +20,7 @@ import javax.persistence.Table;
 public class Trainee {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	@Column(name = "trainee_name", length = 30)
@@ -23,18 +32,41 @@ public class Trainee {
 	
 	private float salary;
 	
+//	@OneToOne
+//	private Laptop laptop;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trainee")
+	List<Laptop> laptops;
+	
 	
 	public Trainee() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Trainee(int id, String traineeName, String email, float salary) {
+	public Trainee( String traineeName, String email, float salary) {
 		super();
-		this.id = id;
+		
 		this.traineeName = traineeName;
 		this.email = email;
 		this.salary = salary;
+	}
+
+	
+	
+
+	
+
+	public List<Laptop> getLaptops() {
+		if(laptops==null) {
+			laptops=new ArrayList<Laptop>();
+		}
+		return laptops;
+	}
+
+
+	public void setLaptops(List<Laptop> laptops) {
+		this.laptops = laptops;
 	}
 
 
@@ -80,8 +112,11 @@ public class Trainee {
 
 	@Override
 	public String toString() {
-		return "Trainee [id=" + id + ", traineeName=" + traineeName + ", email=" + email + ", salary=" + salary + "]";
+		return "Trainee [id=" + id + ", traineeName=" + traineeName + ", email=" + email + ", salary=" + salary
+				+  "]";
 	}
+
+
 	
 	
 	
