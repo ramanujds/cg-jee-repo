@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -35,7 +36,7 @@ public class Trainee {
 //	@OneToOne
 //	private Laptop laptop;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "trainee")
+	@ManyToMany
 	List<Laptop> laptops;
 	
 	

@@ -1,9 +1,13 @@
 package com.cg.app.jpa.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -17,8 +21,8 @@ public class Laptop {
 	
 	private int ram;
 	
-	@ManyToOne
-	private Trainee trainee;
+	@ManyToMany(mappedBy = "laptops")
+	private List<Trainee> trainees;
 	
 	public Laptop() {
 	}
@@ -31,12 +35,16 @@ public class Laptop {
 	
 	
 
-	public Trainee getTrainee() {
-		return trainee;
+
+	public List<Trainee> getTrainees() {
+		if(trainees==null) {
+			trainees=new ArrayList<Trainee>();
+		}
+		return trainees;
 	}
 
-	public void setTrainee(Trainee trainee) {
-		this.trainee = trainee;
+	public void setTrainees(List<Trainee> trainees) {
+		this.trainees = trainees;
 	}
 
 	public int getId() {
