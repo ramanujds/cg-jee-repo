@@ -1,5 +1,8 @@
 package com.cg.app;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +16,27 @@ public class ViSim implements Sim {
 	float smsCharges;
 	
 	
+	@Value("#{${vi.networks}}")
+	Map<String,Integer> supportedNetworks;
 	
+	public void showSupportedNetworks() {
+		supportedNetworks.forEach((network,year)->System.out.println("Network - "+network+" launched in "+year));
+	}
+	
+	
+	
+	public Map<String, Integer> getSupportedNetworks() {
+		return supportedNetworks;
+	}
+
+
+
+	public void setSupportedNetworks(Map<String, Integer> supportedNetworks) {
+		this.supportedNetworks = supportedNetworks;
+	}
+
+
+
 	public float getCallCharges() {
 		return callCharges;
 	}

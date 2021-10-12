@@ -1,5 +1,7 @@
 package com.cg.app;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +14,22 @@ public class AirtelSim implements Sim {
 	@Value("${airtel.smsCharges}")
 	float smsCharges;
 	
+	@Value("#{${airtel.networks}}")
+	List<String> supportedNetworks;
+	
+	public void showSupportedNetworks() {
+		supportedNetworks.forEach(System.out::println);
+	}
 	
 	
+	public List<String> getSupportedNetworks() {
+		return supportedNetworks;
+	}
+
+	public void setSupportedNetworks(List<String> supportedNetworks) {
+		this.supportedNetworks = supportedNetworks;
+	}
+
 	public float getCallCharges() {
 		return callCharges;
 	}

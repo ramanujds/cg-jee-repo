@@ -12,7 +12,7 @@ public class Phone {
 	String brand;
 	
 	@Autowired
-	@Qualifier("airtel")
+	@Qualifier("vi")
 	Sim sim;
 	
 	
@@ -84,6 +84,9 @@ public class Phone {
 		sim.sendText();
 	}
 	
+	public void showSimSupportedNetworks() {
+		sim.showSupportedNetworks();
+	}
 	
 	
 	

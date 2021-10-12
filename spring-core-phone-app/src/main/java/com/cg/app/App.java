@@ -21,5 +21,6 @@ public class App
     	Phone iPhone=(Phone)context.getBean("phone");
         iPhone.makeACall();
         iPhone.sendText();
+        iPhone.showSimSupportedNetworks();
     }
 }

@@ -6,6 +6,8 @@ public interface Sim {
 //		// TODO Auto-generated constructor stub
 //	}
 
+	public void showSupportedNetworks();
+	
 	public void makeACall() ;
 	
 	public void sendText() ;
