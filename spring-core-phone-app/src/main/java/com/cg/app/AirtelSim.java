@@ -1,9 +1,15 @@
 package com.cg.app;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("airtel")
 public class AirtelSim implements Sim {
 
+	@Value("${airtel.callCharges}")
 	float callCharges;
 	
+	@Value("${airtel.smsCharges}")
 	float smsCharges;
 	
 	

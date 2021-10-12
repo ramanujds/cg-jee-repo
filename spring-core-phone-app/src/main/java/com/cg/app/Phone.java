@@ -1,10 +1,18 @@
 package com.cg.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("phone")
 public class Phone {
 
 	int ram;
 	String brand;
 	
+	@Autowired
+	@Qualifier("airtel")
 	Sim sim;
 	
 	

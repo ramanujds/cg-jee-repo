@@ -1,9 +1,15 @@
 package com.cg.app;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("jio")
 public class JIOSim implements Sim {
 
+	@Value("${jio.callCharges}")
 	float callCharges;
 	
+	@Value("${jio.smsCharges}")
 	float smsCharges;
 	
 	

@@ -1,9 +1,15 @@
 package com.cg.app;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component("vi")
 public class ViSim implements Sim {
 
-float callCharges;
+	@Value("${vi.callCharges}")
+	float callCharges;
 	
+	@Value("${vi.smsCharges}")
 	float smsCharges;
 	
 	
