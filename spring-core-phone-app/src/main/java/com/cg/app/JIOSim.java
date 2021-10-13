@@ -1,9 +1,11 @@
 package com.cg.app;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("jio")
+@Scope("prototype")
 public class JIOSim implements Sim {
 
 	@Value("${jio.callCharges}")
@@ -11,6 +13,10 @@ public class JIOSim implements Sim {
 	
 	@Value("${jio.smsCharges}")
 	float smsCharges;
+	
+	public JIOSim() {
+		System.out.println("JIO Sim Created..");
+	}
 	
 	@Override
 	public void showSupportedNetworks() {

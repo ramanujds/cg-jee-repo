@@ -3,9 +3,11 @@ package com.cg.app;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("airtel")
+@Scope("prototype")
 public class AirtelSim implements Sim {
 
 	@Value("${airtel.callCharges}")
@@ -16,6 +18,11 @@ public class AirtelSim implements Sim {
 	
 	@Value("#{${airtel.networks}}")
 	List<String> supportedNetworks;
+	
+	
+	public AirtelSim() {
+		System.out.println("Aiterl Sim Created");
+	}
 	
 	public void showSupportedNetworks() {
 		supportedNetworks.forEach(System.out::println);

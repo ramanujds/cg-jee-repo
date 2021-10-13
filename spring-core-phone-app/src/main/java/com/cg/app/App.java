@@ -19,8 +19,18 @@ public class App
     	
     	ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     	Phone iPhone=(Phone)context.getBean("phone");
-        iPhone.makeACall();
-        iPhone.sendText();
-        iPhone.showSimSupportedNetworks();
+//    	iPhone.setRam(4);
+//        iPhone.makeACall();
+//        iPhone.sendText();
+//       // iPhone.showSimSupportedNetworks();
+//        iPhone.printPhoneDetails();
+//        
+//        Phone iPhone2=(Phone)context.getBean("phone");
+//        iPhone2.makeACall();
+//        iPhone2.sendText();
+//        // iPhone2.showSimSupportedNetworks();
+//        iPhone2.printPhoneDetails();
+        
+        
     }
 }

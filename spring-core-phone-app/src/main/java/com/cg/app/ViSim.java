@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("vi")
+@Scope("prototype")
 public class ViSim implements Sim {
 
 	@Value("${vi.callCharges}")
@@ -18,6 +20,10 @@ public class ViSim implements Sim {
 	
 	@Value("#{${vi.networks}}")
 	Map<String,Integer> supportedNetworks;
+	
+	public ViSim() {
+		System.out.println("Vi Sim Created..");
+	}
 	
 	public void showSupportedNetworks() {
 		supportedNetworks.forEach((network,year)->System.out.println("Network - "+network+" launched in "+year));
