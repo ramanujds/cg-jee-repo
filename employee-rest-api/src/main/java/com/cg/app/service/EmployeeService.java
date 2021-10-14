@@ -16,4 +16,6 @@ public interface EmployeeService {
 	
 	public List<Employee> getAllEmployees();
 	
+	public Employee getEmployeeByName(String employeeName);
+	
 }
