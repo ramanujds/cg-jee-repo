@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.app.dao.EmployeeJpaRepo;
+import com.cg.app.exception.EmployeeNotFoundException;
 import com.cg.app.model.Employee;
 
 @Service
@@ -22,6 +23,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee getEmployeeById(int employeeId) {
+		if(!repo.existsById(employeeId)) {
+			throw new EmployeeNotFoundException("Employee with ID - "+employeeId+" Not Found");
+		}
 		return repo.findById(employeeId).get();
 	}
 
