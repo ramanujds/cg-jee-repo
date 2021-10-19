@@ -19,8 +19,8 @@ public class OrderService {
 	
 	public OrderDetails getOderDetails(int menuItemId, String couponCode) {
 		
-		MenuItem item= rt.getForObject("http://localhost:5100/items/"+menuItemId, MenuItem.class);
-		Coupon coupon= rt.getForObject("http://localhost:5200/coupons/coupon-code/"+couponCode, Coupon.class);
+		MenuItem item= rt.getForObject("http://menu-item-service/items/"+menuItemId, MenuItem.class);
+		Coupon coupon= rt.getForObject("http://coupon-service/coupons/coupon-code/"+couponCode, Coupon.class);
 		
 		float price=item.getPrice();
 		if(coupon.getValidTill().isAfter(LocalDate.now())) {
