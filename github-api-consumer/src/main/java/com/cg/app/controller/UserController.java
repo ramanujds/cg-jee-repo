@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.app.model.User;
@@ -25,6 +26,13 @@ public class UserController {
 		model.addAttribute("user",user);
 		return "show-user.jsp";
 		
+	}
+	
+	@GetMapping("/{username}")
+	@ResponseBody
+	public User getUserDetailsJson(@PathVariable String username) {
+		User user= service.getUserDetails(username);
+		return user;
 	}
 	
 	
