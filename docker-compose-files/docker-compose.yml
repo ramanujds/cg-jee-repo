@@ -1,0 +1,55 @@
+version: '3.7'
+services: 
+    eureka-server:
+        image: eureka-server
+        ports: 
+            - "8761:8761"
+        networks: 
+            - app-network
+    
+    menu-item-service:
+        image: menu-item-service
+        ports: 
+            - "5100:5100"
+        environment: 
+            EUREKA_HOST: eureka-server
+        depends_on: 
+            - eureka-server
+        networks: 
+            - app-network
+
+    coupon-service:
+        image: coupon-service
+        ports: 
+            - "5200:5200"
+        environment: 
+            EUREKA_HOST: eureka-server
+        depends_on: 
+            - eureka-server
+        networks: 
+            - app-network
+
+    order-service:
+        image: order-service
+        ports: 
+            - "5000:5000"
+        environment: 
+            EUREKA_HOST: eureka-server
+        depends_on: 
+            - eureka-server
+        networks: 
+            - app-network
+        
+    api-gateway-server:
+        image: api-gateway-server
+        ports: 
+            - "8888:8888"
+        environment: 
+            EUREKA_HOST: eureka-server
+        depends_on: 
+            - eureka-server
+        networks: 
+            - app-network
+
+networks: 
+    app-network:
