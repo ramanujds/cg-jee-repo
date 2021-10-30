@@ -12,12 +12,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.cg.app.dto.ErrorResponse;
 import com.cg.app.exception.EmployeeNotFoundException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
+@Slf4j
 public class EmployeeErrorController {
 
 	@ExceptionHandler(EmployeeNotFoundException.class)
 	@ResponseStatus(code= HttpStatus.NOT_FOUND)
 	public ErrorResponse handleEmployeeNotFoundError(EmployeeNotFoundException ex, HttpServletRequest request) {
+		
+		log.error(ex.getMessage());
 		
 		return new ErrorResponse(new Date(),
 				HttpStatus.NOT_FOUND,
